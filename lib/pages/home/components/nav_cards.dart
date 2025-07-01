@@ -47,7 +47,7 @@ class NavCards extends StatelessWidget {
     required double iconHeight,
   }) {
     return Container(
-      height: 140,
+      height: 145,
       decoration: BoxDecoration(
         color: Colors.white,
         borderRadius: BorderRadius.circular(6),

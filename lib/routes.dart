@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:flutter_render/pages/application/index.dart';
 import 'package:flutter_render/pages/home/index.dart';
 import 'package:flutter_render/pages/login/login.dart';
 import 'package:flutter_render/pages/login/register.dart';
@@ -8,7 +9,7 @@ import 'package:flutter_render/pages/news/index.dart';
 import 'package:flutter_render/pages/profile/index.dart';
 
 final GoRouter router = GoRouter(
-  initialLocation: '/home',
+  initialLocation: '/application',
   routes: [
     GoRoute(
       path: '/register',
@@ -17,6 +18,10 @@ final GoRouter router = GoRouter(
     GoRoute(
       path: '/login',
       builder: (context, state) => const LoginPage(),
+    ),
+    GoRoute(
+      path: '/application',
+      builder: (context, state) => const ApplicationPage(),
     ),
     GoRoute(
       path: '/home',

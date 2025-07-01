@@ -3,6 +3,8 @@ import 'package:flutter_render/pages/find_house/index.dart';
 import 'package:flutter_render/pages/home/index.dart';
 import 'package:flutter_render/pages/news/index.dart';
 import 'package:flutter_render/pages/profile/index.dart';
+import 'package:flutter_render/theme/app_colors.dart';
+
 
 class ApplicationPage extends StatefulWidget {
   const ApplicationPage({super.key});
@@ -34,25 +36,69 @@ class _ApplicationPageState extends State<ApplicationPage> {
         type: BottomNavigationBarType.fixed,
         currentIndex: _currentIndex,
         onTap: _onTap,
-        items: const [
+        selectedItemColor: AppColors.primary,
+        unselectedItemColor: AppColors.textSecondary,
+        items: [
           BottomNavigationBarItem(
-            icon: Icon(Icons.home),
+            icon: NavIcon(
+              iconPath: 'images/home.png',
+              activeIconPath: 'images/home_active.png',
+              isActive: _currentIndex == 0,
+            ),
             label: '首页',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.search),
-            label: '找房',
+            icon: NavIcon(
+              iconPath: 'images/mall.png',
+              activeIconPath: 'images/mall_active.png',
+              isActive: _currentIndex == 1,
+            ),
+            label: '商城',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.article),
-            label: '资讯',
+            icon: NavIcon(
+              iconPath: 'images/store.png',
+              activeIconPath: 'images/store_active.png',
+              isActive: _currentIndex == 2,
+            ),
+            label: '附近门店',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.person),
+            icon: NavIcon(
+              iconPath: 'images/my.png',
+              activeIconPath: 'images/my_active.png',
+              isActive: _currentIndex == 3,
+            ),
             label: '我的',
           ),
         ],
       ),
     );
   }
-} 
+}
+
+// 导航栏图标组件
+class NavIcon extends StatelessWidget {
+  final String iconPath;
+  final String activeIconPath;
+  final bool isActive;
+  final double size;
+
+  const NavIcon({
+    super.key,
+    required this.iconPath,
+    required this.activeIconPath,
+    required this.isActive,
+    this.size = 24.0,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Image.asset(
+      isActive ? activeIconPath : iconPath,
+      width: size,
+      height: size,
+      color: isActive ? AppColors.primary : null,
+    );
+  }
+}

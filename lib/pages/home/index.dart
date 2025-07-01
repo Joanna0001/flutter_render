@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'components/home_banner.dart';
 import 'components/store_card.dart';
 import 'components/nav_cards.dart';
+import 'components/service_cards.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -29,8 +30,22 @@ class _HomePageState extends State<HomePage> {
                   // 导航卡片
                   const NavCards(),
                   
-                  // 更多模块可以在这里添加...
-                  const SizedBox(height: 80), // 底部留白
+                  // 服务卡片
+                  const ServiceCards(),
+                  
+                  // 领取优惠券
+                  Container(
+                    margin: const EdgeInsets.fromLTRB(12, 0, 12, 12),
+                    child: ClipRRect(
+                      borderRadius: BorderRadius.circular(6),
+                      child: Image.asset(
+                        'images/banner_cupon.png',
+                        fit: BoxFit.cover,
+                        width: double.infinity,
+                      ),
+                    ),
+                  ),
+                  
                 ],
               ),
             ),

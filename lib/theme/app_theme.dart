@@ -259,4 +259,22 @@ class AppTheme {
       ),
     );
   }
+
+  /// 渐变按钮装饰
+  static BoxDecoration gradientButtonDecoration({
+    double borderRadius = 8.0,
+    LinearGradient? gradient,
+  }) {
+    return BoxDecoration(
+      gradient: gradient ?? AppColors.primaryGradient,
+      borderRadius: BorderRadius.circular(borderRadius),
+      boxShadow: const [
+        BoxShadow(
+          color: Color(0x29000000),
+          offset: Offset(0, 3),
+          blurRadius: 6,
+        ),
+      ],
+    );
+  }
 } 

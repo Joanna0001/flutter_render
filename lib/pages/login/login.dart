@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'dart:async';
 import 'package:flutter_render/theme/app_colors.dart';
+import 'package:flutter_render/theme/gradient_button.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
@@ -375,18 +376,19 @@ class _LoginPageState extends State<LoginPage>
   Widget _buildLoginButton(VoidCallback? onPressed) {
     return SizedBox(
       width: double.infinity,
-      child: ElevatedButton(
-        onPressed: _isLoading ? null : onPressed,
-        child: _isLoading
-            ? const SizedBox(
-                height: 20,
-                width: 20,
-                child: CircularProgressIndicator(
-                  strokeWidth: 2,
-                ),
-              )
-            : const Text('登 录', style: TextStyle(fontSize: 16)),
-      ),
+      child: _isLoading
+          ? const Center(
+              child: SizedBox(
+                height: 24,
+                width: 24,
+                child: CircularProgressIndicator(strokeWidth: 2),
+              ),
+            )
+          : GradientButton(
+              text: '登 录',
+              onPressed: onPressed,
+              height: 48,
+            ),
     );
   }
-}
+} 

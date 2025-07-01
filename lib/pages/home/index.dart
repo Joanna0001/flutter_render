@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
-import 'components/search_header.dart';
 import 'components/home_banner.dart';
-import 'components/home_navigation.dart';
-import 'components/home_recommend.dart';
+import 'components/store_card.dart';
+import 'components/nav_cards.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -17,10 +16,6 @@ class _HomePageState extends State<HomePage> {
     return Scaffold(
       body: Column(
         children: [
-          // 顶部搜索栏
-          const SearchHeader(),
-          
-          // 页面其余内容的容器
           Expanded(
             child: SingleChildScrollView(
               child: Column(
@@ -28,11 +23,11 @@ class _HomePageState extends State<HomePage> {
                   // 轮播图
                   const HomeBanner(),
                   
-                  // 导航菜单
-                  const HomeNavigation(),
+                  // 店铺信息卡片
+                  const StoreCard(),
                   
-                  // 推荐房源
-                  const HomeRecommend(),
+                  // 导航卡片
+                  const NavCards(),
                   
                   // 更多模块可以在这里添加...
                   const SizedBox(height: 80), // 底部留白

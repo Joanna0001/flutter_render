@@ -29,7 +29,7 @@ class _HomeBannerState extends State<HomeBanner> {
           // 轮播图
           CarouselSlider(
             options: CarouselOptions(
-              aspectRatio: 16/7,
+              aspectRatio: 2/1,
               viewportFraction: 1.0,
               initialPage: 0,
               enableInfiniteScroll: true,
@@ -51,9 +51,7 @@ class _HomeBannerState extends State<HomeBanner> {
                 builder: (BuildContext context) {
                   return Container(
                     width: MediaQuery.of(context).size.width,
-                    margin: const EdgeInsets.symmetric(horizontal: 10.0),
                     decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(5.0),
                       image: DecorationImage(
                         image: AssetImage(item),
                         fit: BoxFit.cover,

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:flutter_render/theme/gradient_button.dart';
 
 class RegisterPage extends StatefulWidget {
   const RegisterPage({super.key});
@@ -153,19 +154,21 @@ class _RegisterPageState extends State<RegisterPage> {
                   SizedBox(
                     width: double.infinity,
                     height: 48,
-                    child: ElevatedButton(
-                      onPressed: _isLoading ? null : _handleRegister,
-                      child: _isLoading
-                          ? const SizedBox(
+                    child: _isLoading
+                        ? const Center(
+                            child: SizedBox(
                               width: 24,
                               height: 24,
                               child: CircularProgressIndicator(
                                 strokeWidth: 2,
-                                color: Colors.white,
                               ),
-                            )
-                          : const Text('注 册'),
-                    ),
+                            ),
+                          )
+                        : GradientButton(
+                            text: '注 册',
+                            onPressed: _handleRegister,
+                            height: 48,
+                          ),
                   ),
                   const SizedBox(height: 16),
 
@@ -190,4 +193,4 @@ class _RegisterPageState extends State<RegisterPage> {
       ),
     );
   }
-}
+} 

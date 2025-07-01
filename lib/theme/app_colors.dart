@@ -3,9 +3,12 @@ import 'package:flutter/material.dart';
 /// 应用主题颜色
 class AppColors {
   // 主色调
-  static const Color primary = Color(0xFF3264ED);
-  static const Color primaryLight = Color(0xFF4B7EFF);
-  static const Color primaryDark = Color(0xFF1E4BC6);
+  static const Color primary = Color(0xFF8F1C46);
+  static const Color primaryLight = Color(0xFFAF3964);
+  static const Color primaryDark = Color(0xFF6F1535);
+  
+  // 辅助色调
+  static const Color secondary = Color(0xFFE89441);
 
   // 功能色
   static const Color success = Color(0xFF52C41A);
@@ -31,4 +34,15 @@ class AppColors {
   
   // 阴影颜色
   static const Color shadow = Color(0x1A000000);
+  
+  // 渐变色
+  static const Color gradientStart = Color(0xFFD4255A);
+  static const Color gradientEnd = Color(0xFF97107C);
+  
+  /// 获取主要渐变色
+  static LinearGradient get primaryGradient => const LinearGradient(
+    colors: [gradientStart, gradientEnd],
+    begin: Alignment.centerLeft,
+    end: Alignment.centerRight,
+  );
 } 

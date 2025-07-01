@@ -210,6 +210,7 @@ class _LoginPageState extends State<LoginPage>
       child: Column(
         children: [
           // 用户名输入框
+          const SizedBox(height: 6),
           TextFormField(
             controller: _usernameController,
             decoration: const InputDecoration(
@@ -293,6 +294,7 @@ class _LoginPageState extends State<LoginPage>
       key: _codeFormKey,
       child: Column(
         children: [
+          const SizedBox(height: 6),
           // 手机号输入框
           TextFormField(
             controller: _phoneController,

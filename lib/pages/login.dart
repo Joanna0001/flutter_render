@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'dart:async';
+import 'package:flutter_render/theme/app_colors.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
@@ -12,7 +13,8 @@ class LoginPage extends StatefulWidget {
 class _LoginPageState extends State<LoginPage>
     with SingleTickerProviderStateMixin {
   late TabController _tabController;
-  final _formKey = GlobalKey<FormState>();
+  final _passwordFormKey = GlobalKey<FormState>();
+  final _codeFormKey = GlobalKey<FormState>();
 
   // 密码登录相关控制器
   final _usernameController = TextEditingController();
@@ -46,7 +48,7 @@ class _LoginPageState extends State<LoginPage>
   }
 
   void _handlePasswordLogin() async {
-    if (_formKey.currentState!.validate()) {
+    if (_passwordFormKey.currentState!.validate()) {
       setState(() => _isLoading = true);
 
       // TODO: 实现实际的密码登录逻辑
@@ -60,7 +62,7 @@ class _LoginPageState extends State<LoginPage>
   }
 
   void _handleCodeLogin() async {
-    if (_formKey.currentState!.validate()) {
+    if (_codeFormKey.currentState!.validate()) {
       setState(() => _isLoading = true);
 
       // TODO: 实现实际的验证码登录逻辑
@@ -119,6 +121,8 @@ class _LoginPageState extends State<LoginPage>
 
   @override
   Widget build(BuildContext context) {
+    final theme = Theme.of(context);
+
     return Scaffold(
       body: GestureDetector(
         behavior: HitTestBehavior.opaque,
@@ -135,10 +139,10 @@ class _LoginPageState extends State<LoginPage>
                 children: [
                   // Logo或标题
                   Center(
-                    child: const Icon(
-                      Icons.account_circle,
-                      size: 100,
-                      color: Colors.blue,
+                    child: Image.asset(
+                      'images/logo.png',
+                      width: 150,
+                      height: 150,
                     ),
                   ),
                   const SizedBox(height: 32),
@@ -149,11 +153,12 @@ class _LoginPageState extends State<LoginPage>
                     isScrollable: true,
                     tabAlignment: TabAlignment.start,
                     indicatorSize: TabBarIndicatorSize.label,
-                    dividerHeight: 0,
-                    indicator: const UnderlineTabIndicator(
-                      borderSide: BorderSide(color: Colors.blue, width: 2),
+                    dividerColor: Colors.transparent,
+                    indicator: UnderlineTabIndicator(
+                      borderSide: BorderSide(color: theme.colorScheme.primary, width: 2),
                     ),
-                    labelColor: Colors.blue,
+                    labelColor: theme.colorScheme.primary,
+                    unselectedLabelColor: theme.colorScheme.onSurface,
                     tabs: const [
                       Tab(text: '密码登录'),
                       Tab(text: '验证码登录'),
@@ -180,10 +185,10 @@ class _LoginPageState extends State<LoginPage>
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      const Text('还没有账号？'),
+                      Text('还没有账号？', style: theme.textTheme.bodyMedium),
                       TextButton(
                         onPressed: () {
-                          // TODO: 跳转到注册页面
+                          context.push('/register');
                         },
                         child: const Text('立即注册'),
                       ),
@@ -199,20 +204,18 @@ class _LoginPageState extends State<LoginPage>
   }
 
   Widget _buildPasswordLoginForm() {
+    final theme = Theme.of(context);
     return Form(
-      key: _formKey,
+      key: _passwordFormKey,
       child: Column(
         children: [
           // 用户名输入框
           TextFormField(
             controller: _usernameController,
-            decoration: InputDecoration(
+            decoration: const InputDecoration(
               labelText: '用户名',
               hintText: '请输入用户名',
-              prefixIcon: const Icon(Icons.person),
-              border: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(12),
-              ),
+              prefixIcon: Icon(Icons.person),
             ),
             validator: (value) {
               if (value == null || value.isEmpty) {
@@ -241,9 +244,6 @@ class _LoginPageState extends State<LoginPage>
                   });
                 },
               ),
-              border: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(12),
-              ),
             ),
             validator: (value) {
               if (value == null || value.isEmpty) {
@@ -262,13 +262,14 @@ class _LoginPageState extends State<LoginPage>
             children: [
               Checkbox(
                 value: _rememberPassword,
+                side: const BorderSide(color: AppColors.textHint),
                 onChanged: (value) {
                   setState(() {
                     _rememberPassword = value ?? false;
                   });
                 },
               ),
-              const Text('记住密码'),
+              Text('记住密码', style: theme.textTheme.bodyMedium),
               const Spacer(),
               TextButton(
                 onPressed: () {
@@ -289,20 +290,17 @@ class _LoginPageState extends State<LoginPage>
 
   Widget _buildCodeLoginForm() {
     return Form(
-      key: _formKey,
+      key: _codeFormKey,
       child: Column(
         children: [
           // 手机号输入框
           TextFormField(
             controller: _phoneController,
             keyboardType: TextInputType.phone,
-            decoration: InputDecoration(
+            decoration: const InputDecoration(
               labelText: '手机号',
               hintText: '请输入手机号',
-              prefixIcon: const Icon(Icons.phone),
-              border: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(12),
-              ),
+              prefixIcon: Icon(Icons.phone),
             ),
             validator: (value) {
               if (value == null || value.isEmpty) {
@@ -323,13 +321,10 @@ class _LoginPageState extends State<LoginPage>
                 child: TextFormField(
                   controller: _codeController,
                   keyboardType: TextInputType.number,
-                  decoration: InputDecoration(
+                  decoration: const InputDecoration(
                     labelText: '验证码',
                     hintText: '请输入验证码',
-                    prefixIcon: const Icon(Icons.security),
-                    border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(12),
-                    ),
+                    prefixIcon: Icon(Icons.security),
                   ),
                   validator: (value) {
                     if (value == null || value.isEmpty) {
@@ -350,10 +345,7 @@ class _LoginPageState extends State<LoginPage>
                       ? null
                       : _sendVerificationCode,
                   style: FilledButton.styleFrom(
-                    padding: const EdgeInsets.symmetric(vertical: 16),
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(12),
-                    ),
+                    padding: const EdgeInsets.symmetric(vertical: 12),
                   ),
                   child: _isSendingCode
                       ? const SizedBox(
@@ -383,21 +375,12 @@ class _LoginPageState extends State<LoginPage>
       width: double.infinity,
       child: ElevatedButton(
         onPressed: _isLoading ? null : onPressed,
-        style: ElevatedButton.styleFrom(
-          backgroundColor: const Color(0xFF3264ED),
-          foregroundColor: Colors.white,
-          padding: const EdgeInsets.symmetric(vertical: 16),
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(12),
-          ),
-        ),
         child: _isLoading
             ? const SizedBox(
                 height: 20,
                 width: 20,
                 child: CircularProgressIndicator(
                   strokeWidth: 2,
-                  color: Colors.white,
                 ),
               )
             : const Text('登 录', style: TextStyle(fontSize: 16)),

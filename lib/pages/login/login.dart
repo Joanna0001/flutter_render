@@ -126,79 +126,76 @@ class _LoginPageState extends State<LoginPage>
     final theme = Theme.of(context);
 
     return Scaffold(
-      body: GestureDetector(
-        behavior: HitTestBehavior.opaque,
-        onTap: () {
-          FocusScope.of(context).unfocus();
-        },
-        child: SafeArea(
-          child: Center(
-            child: SingleChildScrollView(
-              padding: EdgeInsets.symmetric(horizontal: 48.w, vertical: 24.h),
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  // Logo或标题
-                  Center(
-                    child: Image.asset(
-                      'images/app/logo.png',
-                      width: 150.w,
-                      height: 150.w,
+      body: SafeArea(
+        child: Center(
+          child: SingleChildScrollView(
+            padding: EdgeInsets.symmetric(horizontal: 48.w, vertical: 24.h),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                // Logo或标题
+                Center(
+                  child: Image.asset(
+                    'images/app/logo.png',
+                    width: 150.w,
+                    height: 150.w,
+                  ),
+                ),
+                SizedBox(height: 70.h),
+
+                // Tab 切换
+                TabBar(
+                  controller: _tabController,
+                  isScrollable: true,
+                  tabAlignment: TabAlignment.start,
+                  indicatorSize: TabBarIndicatorSize.label,
+                  dividerColor: Colors.transparent,
+                  indicator: UnderlineTabIndicator(
+                    borderSide: BorderSide(
+                      color: theme.colorScheme.primary,
+                      width: 2,
                     ),
                   ),
-                  SizedBox(height: 70.h),
+                  labelColor: theme.colorScheme.primary,
+                  unselectedLabelColor: theme.colorScheme.onSurface,
+                  labelStyle: TextStyle(fontSize: 28.sp),
+                  unselectedLabelStyle: TextStyle(fontSize: 28.sp),
+                  tabs: const [
+                    Tab(text: '密码登录'),
+                    Tab(text: '验证码登录'),
+                  ],
+                ),
+                SizedBox(height: 50.h),
 
-                  // Tab 切换
-                  TabBar(
+                // Tab 内容
+                SizedBox(
+                  height: 700.h, // 固定高度避免切换时跳动
+                  child: TabBarView(
                     controller: _tabController,
-                    isScrollable: true,
-                    tabAlignment: TabAlignment.start,
-                    indicatorSize: TabBarIndicatorSize.label,
-                    dividerColor: Colors.transparent,
-                    indicator: UnderlineTabIndicator(
-                      borderSide: BorderSide(color: theme.colorScheme.primary, width: 2),
-                    ),
-                    labelColor: theme.colorScheme.primary,
-                    unselectedLabelColor: theme.colorScheme.onSurface,
-                    labelStyle: TextStyle(fontSize: 28.sp),
-                    unselectedLabelStyle: TextStyle(fontSize: 28.sp),
-                    tabs: const [
-                      Tab(text: '密码登录'),
-                      Tab(text: '验证码登录'),
-                    ],
-                  ),
-                  SizedBox(height: 50.h),
-
-                  // Tab 内容
-                  SizedBox(
-                    height: 700.h, // 固定高度避免切换时跳动
-                    child: TabBarView(
-                      controller: _tabController,
-                      children: [
-                        // 密码登录表单
-                        _buildPasswordLoginForm(),
-                        // 验证码登录表单
-                        _buildCodeLoginForm(),
-                      ],
-                    ),
-                  ),
-
-                  // 注册链接
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      Text('还没有账号？', style: TextStyle(fontSize: 24.sp)),
-                      TextButton(
-                        onPressed: () {
-                          context.push('/register');
-                        },
-                        child: Text('立即注册', style: TextStyle(fontSize: 24.sp)),
-                      ),
+                      // 密码登录表单
+                      _buildPasswordLoginForm(),
+                      // 验证码登录表单
+                      _buildCodeLoginForm(),
                     ],
                   ),
-                ],
-              ),
+                ),
+
+                // 注册链接
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text('还没有账号？', style: TextStyle(fontSize: 24.sp)),
+                    TextButton(
+                      onPressed: () {
+                        context.push('/register');
+                      },
+                      child: Text('立即注册', style: TextStyle(fontSize: 24.sp)),
+                    ),
+                  ],
+                ),
+              ],
             ),
           ),
         ),
@@ -405,11 +402,7 @@ class _LoginPageState extends State<LoginPage>
                 child: CircularProgressIndicator(strokeWidth: 3),
               ),
             )
-          : GradientButton(
-              text: '登 录',
-              onPressed: onPressed,
-              height: 88.h,
-            ),
+          : GradientButton(text: '登 录', onPressed: onPressed, height: 88.h),
     );
   }
-} 
+}

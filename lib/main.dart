@@ -21,6 +21,19 @@ class MyApp extends StatelessWidget {
         theme: AppTheme.light(),
         darkTheme: AppTheme.dark(),
         routerConfig: router,
+        builder: (context, widget) {
+            return GestureDetector(
+              onTap: () {
+                // 点击空白处隐藏键盘
+                FocusScopeNode currentFocus = FocusScope.of(context);
+                if (!currentFocus.hasPrimaryFocus &&
+                    currentFocus.focusedChild != null) {
+                  FocusManager.instance.primaryFocus?.unfocus();
+                }
+              },
+              child: widget!,
+            );
+          },
       ),
     );
   }

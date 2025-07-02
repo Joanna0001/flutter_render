@@ -277,4 +277,24 @@ class AppTheme {
       ],
     );
   }
+
+  // 通用卡片装饰
+  static BoxDecoration cardDecoration({String? backgroundImage}) => BoxDecoration(
+    color: Colors.white,
+    borderRadius: BorderRadius.circular(6),
+    image: backgroundImage != null 
+      ? DecorationImage(
+          image: AssetImage(backgroundImage),
+          fit: BoxFit.cover,
+        )
+      : null,
+    boxShadow: [
+      BoxShadow(
+        color: AppColors.shadow.withAlpha(5),
+        blurRadius: 4,
+        spreadRadius: 0,
+        offset: const Offset(0, 4),
+      )
+    ],
+  );
 } 

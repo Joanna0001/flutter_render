@@ -20,6 +20,8 @@ class AppColors {
   static const Color textPrimary = Color(0xFF222222);
   static const Color textSecondary = Color(0xFF666666);
   static const Color textHint = Color(0xFF999999);
+  static const Color textTertiary = Color(0xFF362B2F);
+  static const Color textQuaternary = Color(0xFF000000);
 
   // 背景色
   static const Color background = Color(0xFFF5F5F5);
@@ -28,6 +30,7 @@ class AppColors {
 
   // 边框颜色
   static const Color border = Color(0xFFE8E8E8);
+  static const Color borderSecondary = Color(0xFFDEDEDE);
   
   // 禁用状态颜色
   static const Color disabled = Color(0xFFBFBFBF);

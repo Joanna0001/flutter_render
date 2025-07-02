@@ -9,7 +9,7 @@ import 'package:flutter_render/pages/news/index.dart';
 import 'package:flutter_render/pages/profile/index.dart';
 
 final GoRouter router = GoRouter(
-  initialLocation: '/login',
+  initialLocation: '/application',
   routes: [
     GoRoute(
       path: '/register',

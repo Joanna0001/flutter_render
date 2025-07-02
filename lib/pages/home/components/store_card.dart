@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import '../../../theme/app_colors.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_render/theme/app_colors.dart';
+import 'package:flutter_render/theme/app_theme.dart';
 
 class StoreCard extends StatelessWidget {
   const StoreCard({super.key});
@@ -9,18 +10,7 @@ class StoreCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       margin: EdgeInsets.symmetric(horizontal: 24.w, vertical: 32.h),
-      decoration: BoxDecoration(
-        color: Theme.of(context).cardTheme.color ?? Colors.white,
-        borderRadius: BorderRadius.circular(6),
-        boxShadow: [
-          BoxShadow(
-            color: AppColors.shadow.withAlpha(5),
-            blurRadius: 4,
-            spreadRadius: 0,
-            offset: const Offset(0, 4),
-          )
-        ],
-      ),
+      decoration: AppTheme.cardDecoration(),
       child: Padding(
         padding: EdgeInsets.symmetric(horizontal: 24.w, vertical: 24.h),
         child: Column(

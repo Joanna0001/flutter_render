@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_render/theme/app_colors.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_render/theme/app_theme.dart';
 
 class ServiceCards extends StatelessWidget {
   const ServiceCards({super.key});
@@ -40,22 +41,7 @@ class ServiceCards extends StatelessWidget {
   }) {
     return Container(
       height: 150.h,
-      decoration: BoxDecoration(
-        color: Colors.white,
-        borderRadius: BorderRadius.circular(6),
-        image: DecorationImage(
-          image: AssetImage(backgroundImage),
-          fit: BoxFit.cover,
-        ),
-        boxShadow: [
-          BoxShadow(
-            color: AppColors.shadow.withAlpha(5),
-            blurRadius: 4,
-            spreadRadius: 0,
-            offset: const Offset(0, 4),
-          ),
-        ],
-      ),
+      decoration: AppTheme.cardDecoration(backgroundImage: backgroundImage),
       child: Material(
         color: Colors.transparent,
         child: InkWell(

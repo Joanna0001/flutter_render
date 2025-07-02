@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_render/theme/app_colors.dart';
 import 'package:flutter_render/theme/app_theme.dart';
+import 'package:flutter_render/pages/profile/order/list.dart';
 
 class MyOrder extends StatefulWidget {
   const MyOrder({super.key});
@@ -16,7 +17,7 @@ class _MyOrderState extends State<MyOrder> {
     return Container(
       width: double.infinity,
       margin: EdgeInsets.fromLTRB(24.w, 20.h, 24.w, 0),
-      padding: EdgeInsets.symmetric(vertical: 30.h),
+      padding: EdgeInsets.only(top: 30.h),
       decoration: AppTheme.cardDecoration(),
       child: Column(
         children: [
@@ -25,6 +26,10 @@ class _MyOrderState extends State<MyOrder> {
           Divider(color: AppColors.borderSecondary, thickness: 1.w, height: 0.5.w),
           SizedBox(height: 30.h),
           _buildOrderTypes(),
+          SizedBox(height: 30.h),
+          _buildFunctionItem('我的优惠券', 'images/my_cupon.png'),
+          _buildFunctionItem('领取优惠券', 'images/get_cupon.png'),
+          _buildFunctionItem('地址管理', 'images/address.png'),
         ],
       ),
     );
@@ -46,7 +51,12 @@ class _MyOrderState extends State<MyOrder> {
           ),
           GestureDetector(
             onTap: () {
-              // 查看全部订单
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => const OrderListPage(initialTabIndex: 0),
+                ),
+              );
             },
             child: Row(
               children: [
@@ -97,7 +107,31 @@ class _MyOrderState extends State<MyOrder> {
   Widget _buildOrderTypeItem(String title, String image) {
     return GestureDetector(
       onTap: () {
-        // 处理点击事件
+        // 根据订单类型跳转到对应的订单列表页面
+        int initialIndex = 0;
+        switch (title) {
+          case '待付款':
+            initialIndex = 1;
+            break;
+          case '待发货':
+            initialIndex = 2;
+            break;
+          case '待收货':
+            initialIndex = 3;
+            break;
+          case '已完成':
+            initialIndex = 4;
+            break;
+          case '退货':
+            initialIndex = 5;
+            break;
+        }
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) => OrderListPage(initialTabIndex: initialIndex),
+          ),
+        );
       },
       child: Column(
         children: [
@@ -116,6 +150,41 @@ class _MyOrderState extends State<MyOrder> {
             style: TextStyle(fontSize: 24.sp, color: AppColors.textSecondary),
           ),
         ],
+      ),
+    );
+  }
+
+  // 功能项
+  Widget _buildFunctionItem(String title, String image) {
+    return GestureDetector(
+      onTap: () {
+        // 处理点击事件
+      },
+      child: Container(
+        padding: EdgeInsets.symmetric(horizontal: 30.w, vertical: 25.h),
+        child: Row(
+          children: [
+            Image.asset(
+              image,
+              width: 40.w,
+              height: 40.w,
+            ),
+            SizedBox(width: 20.w),
+            Text(
+              title,
+              style: TextStyle(
+                fontSize: 28.sp,
+                color: AppColors.textTertiary,
+              ),
+            ),
+            const Spacer(),
+            Icon(
+              Icons.arrow_forward_ios,
+              size: 24.sp,
+              color: AppColors.textSecondary,
+            ),
+          ],
+        ),
       ),
     );
   }

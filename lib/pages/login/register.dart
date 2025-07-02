@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:flutter_render/theme/gradient_button.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_render/theme/app_colors.dart';
 
 class RegisterPage extends StatefulWidget {
   const RegisterPage({super.key});
@@ -51,7 +52,7 @@ class _RegisterPageState extends State<RegisterPage> {
     return Scaffold(
       appBar: AppBar(
         title: Text('注册', style: TextStyle(fontSize: 32.sp)),
-        centerTitle: true,
+        backgroundColor: AppColors.primary,
       ),
       body: GestureDetector(
         behavior: HitTestBehavior.opaque,

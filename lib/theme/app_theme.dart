@@ -46,8 +46,8 @@ class AppTheme {
       scaffoldBackgroundColor: AppColors.background,
       // AppBar主题
       appBarTheme: const AppBarTheme(
-        backgroundColor: AppColors.primary,
-        foregroundColor: Colors.white,
+        backgroundColor: Colors.white,
+        centerTitle: true,
         elevation: 0,
       ),
       // 卡片主题
@@ -176,6 +176,7 @@ class AppTheme {
       appBarTheme: const AppBarTheme(
         backgroundColor: Color(0xFF1F1F1F), // 暗色AppBar背景
         foregroundColor: Colors.white,
+        centerTitle: true,
         elevation: 0,
       ),
       // 卡片主题

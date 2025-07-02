@@ -12,9 +12,6 @@ class ProfilePage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text('我的', style: TextStyle(fontSize: 32.sp, color: AppColors.textPrimary)),
-        centerTitle: true,
-        backgroundColor: Colors.white,
-        elevation: 0,
       ),
       backgroundColor: const Color(0xfff5f5f5),
       body: SingleChildScrollView(

@@ -142,7 +142,7 @@ class _LoginPageState extends State<LoginPage>
                   // Logo或标题
                   Center(
                     child: Image.asset(
-                      'images/logo.png',
+                      'images/app/logo.png',
                       width: 150.w,
                       height: 150.w,
                     ),

@@ -17,8 +17,8 @@ class NavCards extends StatelessWidget {
             child: _buildNavCard(
               context,
               title: '附近门店',
-              backgroundImage: 'images/near_sort_bg.png',
-              iconImage: 'images/near_sort.png',
+              backgroundImage: 'images/home/near_sort_bg.png',
+              iconImage: 'images/home/near_sort.png',
               subTitle: '导航前往',
               iconHeight: 120.h,
             ),
@@ -29,8 +29,8 @@ class NavCards extends StatelessWidget {
             child: _buildNavCard(
               context,
               title: '摩葡商城',
-              backgroundImage: 'images/send_to_home_bg.png',
-              iconImage: 'images/send_to_home.png',
+              backgroundImage: 'images/home/send_to_home_bg.png',
+              iconImage: 'images/home/send_to_home.png',
               subTitle: '送货到家',
               iconHeight: 140.h,
             ),

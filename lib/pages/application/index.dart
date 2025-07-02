@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_render/pages/find_house/index.dart';
 import 'package:flutter_render/pages/home/index.dart';
-import 'package:flutter_render/pages/news/index.dart';
+import 'package:flutter_render/pages/mall/list.dart';
 import 'package:flutter_render/pages/profile/index.dart';
+import 'package:flutter_render/pages/store/list.dart';
 import 'package:flutter_render/theme/app_colors.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -17,8 +17,8 @@ class _ApplicationPageState extends State<ApplicationPage> {
   int _currentIndex = 0;
   final List<Widget> _pages = [
     const HomePage(),
-    const FindHousePage(),
-    const NewsPage(),
+    const MallListPage(),
+    const StoreListPage(),
     const ProfilePage(),
   ];
 
@@ -46,23 +46,23 @@ class _ApplicationPageState extends State<ApplicationPage> {
         ),
         items: [
           BottomNavigationBarItem(
-            icon: _buildIcon('images/home.png', 'images/home_active.png', _currentIndex == 0),
-            activeIcon: _buildIcon('images/home_active.png', 'images/home_active.png', _currentIndex == 0),
+            icon: _buildIcon('images/app/home.png', 'images/app/home_active.png', _currentIndex == 0),
+            activeIcon: _buildIcon('images/app/home_active.png', 'images/app/home_active.png', _currentIndex == 0),
             label: '首页',
           ),
           BottomNavigationBarItem(
-            icon: _buildIcon('images/mall.png', 'images/mall_active.png', _currentIndex == 1),
-            activeIcon: _buildIcon('images/mall_active.png', 'images/mall_active.png', _currentIndex == 1),
+            icon: _buildIcon('images/app/mall.png', 'images/app/mall_active.png', _currentIndex == 1),
+            activeIcon: _buildIcon('images/app/mall_active.png', 'images/app/mall_active.png', _currentIndex == 1),
             label: '商城',
           ),
           BottomNavigationBarItem(
-            icon: _buildIcon('images/store.png', 'images/store_active.png', _currentIndex == 2),
-            activeIcon: _buildIcon('images/store_active.png', 'images/store_active.png', _currentIndex == 2),
+            icon: _buildIcon('images/app/store.png', 'images/app/store_active.png', _currentIndex == 2),
+            activeIcon: _buildIcon('images/app/store_active.png', 'images/app/store_active.png', _currentIndex == 2),
             label: '附近门店',
           ),
           BottomNavigationBarItem(
-            icon: _buildIcon('images/my.png', 'images/my_active.png', _currentIndex == 3),
-            activeIcon: _buildIcon('images/my_active.png', 'images/my_active.png', _currentIndex == 3),
+            icon: _buildIcon('images/app/my.png', 'images/app/my_active.png', _currentIndex == 3),
+            activeIcon: _buildIcon('images/app/my_active.png', 'images/app/my_active.png', _currentIndex == 3),
             label: '我的',
           ),
         ],

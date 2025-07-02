@@ -17,7 +17,7 @@ class OrderGoods extends StatelessWidget {
           // 店铺信息
           Row(
             children: [
-              Image.asset('images/store.png', width: 40.w, height: 40.w),
+              Image.asset('images/app/store.png', width: 40.w, height: 40.w),
               SizedBox(width: 10.w),
               Text(
                 '店铺名称',

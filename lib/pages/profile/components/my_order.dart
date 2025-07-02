@@ -27,9 +27,9 @@ class _MyOrderState extends State<MyOrder> {
           SizedBox(height: 30.h),
           _buildOrderTypes(),
           SizedBox(height: 30.h),
-          _buildFunctionItem('我的优惠券', 'images/my_cupon.png'),
-          _buildFunctionItem('领取优惠券', 'images/get_cupon.png'),
-          _buildFunctionItem('地址管理', 'images/address.png'),
+          _buildFunctionItem('我的优惠券', 'images/profile/my_cupon.png'),
+          _buildFunctionItem('领取优惠券', 'images/profile/get_cupon.png'),
+          _buildFunctionItem('地址管理', 'images/profile/address.png'),
         ],
       ),
     );
@@ -87,17 +87,17 @@ class _MyOrderState extends State<MyOrder> {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Expanded(child: _buildOrderTypeItem('待付款', "images/order_to_pay.png")),
-          Expanded(child: _buildOrderTypeItem('待发货', "images/order_to_ship.png")),
-          Expanded(child: _buildOrderTypeItem('待收货', "images/order_to_receive.png")),
-          Expanded(child: _buildOrderTypeItem('已完成', "images/order_completed.png")),
+          Expanded(child: _buildOrderTypeItem('待付款', "images/profile/order_to_pay.png")),
+          Expanded(child: _buildOrderTypeItem('待发货', "images/profile/order_to_ship.png")),
+          Expanded(child: _buildOrderTypeItem('待收货', "images/profile/order_to_receive.png")),
+          Expanded(child: _buildOrderTypeItem('已完成', "images/profile/order_completed.png")),
           VerticalDivider(
             color: AppColors.borderSecondary,
             thickness: 1.5.w,
             indent: 10.h, // 顶部缩进距离
             endIndent: 10.h, // 底部缩进距离
           ),
-          Expanded(child: _buildOrderTypeItem('退货', "images/order_return.png")),
+          Expanded(child: _buildOrderTypeItem('退货', "images/profile/order_return.png")),
         ],
       ),
     );

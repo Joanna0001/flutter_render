@@ -15,9 +15,9 @@ class _HomeBannerState extends State<HomeBanner> {
 
   // 轮播图数据
   final List<String> imageList = [
-    'images/banner_1.png',
-    'images/banner_2.png',
-    'images/banner_3.png',
+    'images/home/banner_1.png',
+    'images/home/banner_2.png',
+    'images/home/banner_3.png',
   ];
 
   @override

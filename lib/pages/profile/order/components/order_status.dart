@@ -11,7 +11,7 @@ class OrderStatus extends StatelessWidget {
       padding: EdgeInsets.symmetric(horizontal: 30.w, vertical: 30.h),
       decoration: BoxDecoration(
         image: DecorationImage(
-          image: AssetImage('images/order_bg.png'),
+          image: AssetImage('images/profile/order_bg.png'),
           fit: BoxFit.cover,
         ),
       ),
@@ -41,7 +41,7 @@ class OrderStatus extends StatelessWidget {
               ),
             ],
           ),
-          Image.asset('images/pay.png', width: 70.w, height: 70.w),
+          Image.asset('images/profile/pay.png', width: 70.w, height: 70.w),
         ],
       ),
     );

@@ -17,7 +17,7 @@ class ServiceCards extends StatelessWidget {
             child: _buildServiceCard(
               context,
               title: '我的卡券',
-              backgroundImage: 'images/cupon.png',
+              backgroundImage: 'images/home/cupon.png',
             ),
           ),
           SizedBox(width: 24.w),
@@ -26,7 +26,7 @@ class ServiceCards extends StatelessWidget {
             child: _buildServiceCard(
               context,
               title: '我的订单',
-              backgroundImage: 'images/order.png',
+              backgroundImage: 'images/home/order.png',
             ),
           ),
         ],

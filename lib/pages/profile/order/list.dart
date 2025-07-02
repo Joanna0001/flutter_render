@@ -104,7 +104,7 @@ class _OrderListPageState extends State<OrderListPage>
               padding: EdgeInsets.all(20.w),
               child: Row(
                 children: [
-                  Image.asset('images/store.png', width: 40.w, height: 40.w),
+                  Image.asset('images/app/store.png', width: 40.w, height: 40.w),
                   SizedBox(width: 10.w),
                   Text(
                     '店铺名称',

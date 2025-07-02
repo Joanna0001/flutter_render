@@ -29,7 +29,7 @@ class DeliveryAddress extends StatelessWidget {
           Row(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Image.asset('images/address.png', width: 40.w, height: 40.w),
+              Image.asset('images/profile/address.png', width: 40.w, height: 40.w),
               SizedBox(width: 20.w),
               Expanded(
                 child: Column(

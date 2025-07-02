@@ -40,7 +40,7 @@ class _HomePageState extends State<HomePage> {
                     child: ClipRRect(
                       borderRadius: BorderRadius.circular(6),
                       child: Image.asset(
-                        'images/banner_cupon.png',
+                        'images/home/banner_cupon.png',
                         fit: BoxFit.cover,
                         width: double.infinity,
                       ),

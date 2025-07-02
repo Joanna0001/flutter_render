@@ -4,9 +4,8 @@ import 'package:flutter_render/pages/application/index.dart';
 import 'package:flutter_render/pages/home/index.dart';
 import 'package:flutter_render/pages/login/login.dart';
 import 'package:flutter_render/pages/login/register.dart';
-import 'package:flutter_render/pages/find_house/index.dart';
-import 'package:flutter_render/pages/news/index.dart';
 import 'package:flutter_render/pages/profile/index.dart';
+import 'package:flutter_render/pages/store/list.dart';
 
 final GoRouter router = GoRouter(
   initialLocation: '/application',
@@ -28,12 +27,8 @@ final GoRouter router = GoRouter(
       builder: (context, state) => const HomePage(),
     ),
     GoRoute(
-      path: '/find-house',
-      builder: (context, state) => const FindHousePage(),
-    ),
-    GoRoute(
-      path: '/news',
-      builder: (context, state) => const NewsPage(),
+      path: '/store',
+      builder: (context, state) => const StoreListPage(),
     ),
     GoRoute(
       path: '/profile',

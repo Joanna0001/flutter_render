@@ -14,7 +14,7 @@ class Header extends StatelessWidget {
       decoration: const BoxDecoration(
         color: Colors.white,
         image: DecorationImage(
-          image: AssetImage('images/my_bg.png'),
+          image: AssetImage('images/profile/my_bg.png'),
           fit: BoxFit.cover,
         ),
       ),
@@ -25,7 +25,7 @@ class Header extends StatelessWidget {
             backgroundColor: Colors.white,
             child: CircleAvatar(
               radius: 56.w,
-              backgroundImage: const AssetImage('images/avatar.png'),
+              backgroundImage: const AssetImage('images/profile/avatar.png'),
             ),
           ),
           SizedBox(width: 30.w),

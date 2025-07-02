@@ -3,6 +3,7 @@ import 'components/home_banner.dart';
 import 'components/store_card.dart';
 import 'components/nav_cards.dart';
 import 'components/service_cards.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -35,7 +36,7 @@ class _HomePageState extends State<HomePage> {
                   
                   // 领取优惠券
                   Container(
-                    margin: const EdgeInsets.fromLTRB(12, 0, 12, 12),
+                    margin: EdgeInsets.fromLTRB(24.w, 0, 24.w, 24.h),
                     child: ClipRRect(
                       borderRadius: BorderRadius.circular(6),
                       child: Image.asset(

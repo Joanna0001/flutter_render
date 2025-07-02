@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_render/theme/app_colors.dart';
 import 'package:carousel_slider/carousel_slider.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class HomeBanner extends StatefulWidget {
   const HomeBanner({super.key});
@@ -65,7 +66,7 @@ class _HomeBannerState extends State<HomeBanner> {
           
           // 指示器
           Positioned(
-            bottom: 12.0,
+            bottom: 24.h,
             child: Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: imageList.asMap().entries.map((entry) {

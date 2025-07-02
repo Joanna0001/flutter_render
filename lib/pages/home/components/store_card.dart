@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import '../../../theme/app_colors.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class StoreCard extends StatelessWidget {
   const StoreCard({super.key});
@@ -7,7 +8,7 @@ class StoreCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: const EdgeInsets.symmetric(horizontal: 12, vertical: 16),
+      margin: EdgeInsets.symmetric(horizontal: 24.w, vertical: 32.h),
       decoration: BoxDecoration(
         color: Theme.of(context).cardTheme.color ?? Colors.white,
         borderRadius: BorderRadius.circular(6),
@@ -21,7 +22,7 @@ class StoreCard extends StatelessWidget {
         ],
       ),
       child: Padding(
-        padding: const EdgeInsets.all(16),
+        padding: EdgeInsets.symmetric(horizontal: 24.w, vertical: 24.h),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -41,31 +42,31 @@ class StoreCard extends StatelessWidget {
                   onTap: () {},
                   child: Row(
                     children: [
-                      Icon(Icons.phone_outlined, color: AppColors.textSecondary, size: 16),
-                      const SizedBox(width: 2),
+                      Icon(Icons.phone_outlined, color: AppColors.textSecondary, size: 32.sp),
+                      SizedBox(width: 4.w),
                       Text(
                         '13800138000',
                         style: TextStyle(
                           color: AppColors.textSecondary,
-                          fontSize: 12,
+                          fontSize: 24.sp,
                         ),
                       ),
                     ],
                   ),
                 ),
-                const SizedBox(width: 16),
+                SizedBox(width: 32.w),
                 // 导航图标
                 InkWell(
                   onTap: () {},
                   child: Row(
                     children: [
-                      Icon(Icons.near_me_outlined, color: AppColors.textSecondary, size: 16),
-                      const SizedBox(width: 2),
+                      Icon(Icons.near_me_outlined, color: AppColors.textSecondary, size: 32.sp),
+                      SizedBox(width: 4.w),
                       Text(
                         '导航',
                         style: TextStyle(
                           color: AppColors.textSecondary,
-                          fontSize: 12,
+                          fontSize: 24.sp,
                         ),
                       ),
                     ],
@@ -74,18 +75,18 @@ class StoreCard extends StatelessWidget {
               ],
             ),
             
-            const SizedBox(height: 8),
+            SizedBox(height: 16.h),
             
             // 第二行：小标签
             Row(
               children: [
                 _buildTag('到店自取', AppColors.primary),
-                const SizedBox(width: 8),
+                SizedBox(width: 16.w),
                 _buildTag('送货到家', AppColors.secondary),
               ],
             ),
             
-            const SizedBox(height: 8),
+            SizedBox(height: 16.h),
             
             // 第三行：地址和距离
             Row(
@@ -95,35 +96,35 @@ class StoreCard extends StatelessWidget {
                     '地址：北京市海淀区清华大学西门对面清华科技园3号楼101室',
                     style: TextStyle(
                       color: AppColors.textSecondary,
-                      fontSize: 12,
+                      fontSize: 22.sp,
                     ),
                     maxLines: 1,
                     overflow: TextOverflow.ellipsis,
                   ),
                 ),
-                const SizedBox(width: 8),
+                SizedBox(width: 16.w),
                 Text(
                   '距您600m',
                   style: TextStyle(
                     color: AppColors.textSecondary,
-                    fontSize: 12,
+                    fontSize: 22.sp,
                   ),
                 ),
               ],
             ),
             
-            const SizedBox(height: 6),
+            SizedBox(height: 8.h),
             
             // 第四行：营业时间
             Text(
               '营业时间：08:00-22:00',
               style: TextStyle(
                 color: AppColors.textSecondary,
-                fontSize: 12,
+                fontSize: 22.sp,
               ),
             ),
             
-            const SizedBox(height: 6),
+            SizedBox(height: 8.h),
             
             // 第五行：提示超出服务范围
             Text(
@@ -131,7 +132,7 @@ class StoreCard extends StatelessWidget {
               textAlign: TextAlign.start,
               style: TextStyle(
                 color: AppColors.primary,
-                fontSize: 12,
+                fontSize: 22.sp,
               ),
             ),
           ],
@@ -142,16 +143,16 @@ class StoreCard extends StatelessWidget {
 
   Widget _buildTag(String text, Color color) {
     return Container(
-      padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 2),
+      padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 4.h),
       decoration: BoxDecoration(
         color: color,
         borderRadius: BorderRadius.circular(4),
       ),
       child: Text(
         text,
-        style: const TextStyle(
+        style: TextStyle(
           color: Colors.white,
-          fontSize: 12,
+          fontSize: 20.sp,
         ),
       ),
     );

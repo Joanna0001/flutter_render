@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_render/theme/app_colors.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class NavCards extends StatelessWidget {
   const NavCards({super.key});
@@ -7,7 +8,7 @@ class NavCards extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: const EdgeInsets.fromLTRB(12, 0, 12, 12),
+      margin: EdgeInsets.fromLTRB(24.w, 0, 24.w, 24.h),
       child: Row(
         children: [
           // 第一个卡片：附近门店
@@ -18,10 +19,10 @@ class NavCards extends StatelessWidget {
               backgroundImage: 'images/near_sort_bg.png',
               iconImage: 'images/near_sort.png',
               subTitle: '导航前往',
-              iconHeight: 60,
+              iconHeight: 120.h,
             ),
           ),
-          const SizedBox(width: 12),
+          SizedBox(width: 24.w),
           // 第二个卡片：摩葡商城
           Expanded(
             child: _buildNavCard(
@@ -30,7 +31,7 @@ class NavCards extends StatelessWidget {
               backgroundImage: 'images/send_to_home_bg.png',
               iconImage: 'images/send_to_home.png',
               subTitle: '送货到家',
-              iconHeight: 70,
+              iconHeight: 140.h,
             ),
           ),
         ],
@@ -47,7 +48,7 @@ class NavCards extends StatelessWidget {
     required double iconHeight,
   }) {
     return Container(
-      height: 145,
+      height: 290.h,
       decoration: BoxDecoration(
         color: Colors.white,
         borderRadius: BorderRadius.circular(6),
@@ -70,7 +71,7 @@ class NavCards extends StatelessWidget {
           onTap: () {},
           borderRadius: BorderRadius.circular(6),
           child: Padding(
-            padding: const EdgeInsets.all(12),
+            padding: EdgeInsets.symmetric(horizontal: 24.w, vertical: 24.h),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
@@ -79,21 +80,21 @@ class NavCards extends StatelessWidget {
                   children: [
                     Text(
                       title,
-                      style: const TextStyle(
+                      style: TextStyle(
                         color: AppColors.textPrimary,
                         fontWeight: FontWeight.bold,
-                        fontSize: 16,
+                        fontSize: 32.sp,
                       ),
                     ),
-                    const Icon(
+                    Icon(
                       Icons.arrow_right,
                       color: AppColors.textPrimary,
-                      size: 14,
+                      size: 28.sp,
                     ),
                   ],
                 ),
 
-                Text(subTitle, style: const TextStyle(color: AppColors.textSecondary, fontSize: 11)),
+                Text(subTitle, style: TextStyle(color: AppColors.textSecondary, fontSize: 20.sp)),
                 const Spacer(),
                 // 底部图标 - 居中显示
                 Center(

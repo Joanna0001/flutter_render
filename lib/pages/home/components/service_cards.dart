@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_render/theme/app_colors.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class ServiceCards extends StatelessWidget {
   const ServiceCards({super.key});
@@ -7,7 +8,7 @@ class ServiceCards extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: const EdgeInsets.fromLTRB(12, 0, 12, 12),
+      margin: EdgeInsets.fromLTRB(24.w, 0, 24.w, 24.h),
       child: Row(
         children: [
           // 第一个卡片：我的卡券
@@ -18,7 +19,7 @@ class ServiceCards extends StatelessWidget {
               backgroundImage: 'images/cupon.png',
             ),
           ),
-          const SizedBox(width: 12),
+          SizedBox(width: 24.w),
           // 第二个卡片：我的订单
           Expanded(
             child: _buildServiceCard(
@@ -38,7 +39,7 @@ class ServiceCards extends StatelessWidget {
     required String backgroundImage,
   }) {
     return Container(
-      height: 100,
+      height: 150.h,
       decoration: BoxDecoration(
         color: Colors.white,
         borderRadius: BorderRadius.circular(6),
@@ -61,13 +62,13 @@ class ServiceCards extends StatelessWidget {
           onTap: () {},
           borderRadius: BorderRadius.circular(6),
           child: Padding(
-            padding: const EdgeInsets.all(12),
+            padding: EdgeInsets.symmetric(horizontal: 24.w, vertical: 24.h),
             child: Text(
               title,
-              style: const TextStyle(
+              style: TextStyle(
                 color: AppColors.textPrimary,
                 fontWeight: FontWeight.bold,
-                fontSize: 14,
+                fontSize: 26.sp,
               ),
             ),
           ),

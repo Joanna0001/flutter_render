@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:flutter_render/theme/gradient_button.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class RegisterPage extends StatefulWidget {
   const RegisterPage({super.key});
@@ -47,10 +48,9 @@ class _RegisterPageState extends State<RegisterPage> {
 
   @override
   Widget build(BuildContext context) {
-    final theme = Theme.of(context);
     return Scaffold(
       appBar: AppBar(
-        title: const Text('注册'),
+        title: Text('注册', style: TextStyle(fontSize: 32.sp)),
         centerTitle: true,
       ),
       body: GestureDetector(
@@ -60,20 +60,24 @@ class _RegisterPageState extends State<RegisterPage> {
         },
         child: SafeArea(
           child: SingleChildScrollView(
-            padding: const EdgeInsets.all(24.0),
+            padding: EdgeInsets.symmetric(horizontal: 48.w, vertical: 24.h),
             child: Form(
               key: _formKey,
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  const SizedBox(height: 32),
+                  SizedBox(height: 32.h),
                   // 用户名
                   TextFormField(
                     controller: _usernameController,
-                    decoration: const InputDecoration(
+                    style: TextStyle(fontSize: 28.sp),
+                    decoration: InputDecoration(
                       labelText: '用户名',
                       hintText: '请输入用户名',
-                      prefixIcon: Icon(Icons.person_outline),
+                      labelStyle: TextStyle(fontSize: 28.sp),
+                      hintStyle: TextStyle(fontSize: 28.sp),
+                      prefixIcon: Icon(Icons.person_outline, size: 36.sp),
+                      contentPadding: EdgeInsets.symmetric(vertical: 20.h),
                     ),
                     validator: (value) {
                       if (value == null || value.isEmpty) {
@@ -82,21 +86,26 @@ class _RegisterPageState extends State<RegisterPage> {
                       return null;
                     },
                   ),
-                  const SizedBox(height: 16),
+                  SizedBox(height: 32.h),
 
                   // 密码
                   TextFormField(
                     controller: _passwordController,
                     obscureText: _obscurePassword,
+                    style: TextStyle(fontSize: 28.sp),
                     decoration: InputDecoration(
                       labelText: '密码',
                       hintText: '请输入密码',
-                      prefixIcon: const Icon(Icons.lock_outline),
+                      labelStyle: TextStyle(fontSize: 28.sp),
+                      hintStyle: TextStyle(fontSize: 28.sp),
+                      prefixIcon: Icon(Icons.lock_outline, size: 36.sp),
+                      contentPadding: EdgeInsets.symmetric(vertical: 20.h),
                       suffixIcon: IconButton(
                         icon: Icon(
                           _obscurePassword
                               ? Icons.visibility_off
                               : Icons.visibility,
+                          size: 36.sp,
                         ),
                         onPressed: () {
                           setState(() {
@@ -115,21 +124,26 @@ class _RegisterPageState extends State<RegisterPage> {
                       return null;
                     },
                   ),
-                  const SizedBox(height: 16),
+                  SizedBox(height: 32.h),
 
                   // 确认密码
                   TextFormField(
                     controller: _confirmPasswordController,
                     obscureText: _obscureConfirmPassword,
+                    style: TextStyle(fontSize: 28.sp),
                     decoration: InputDecoration(
                       labelText: '确认密码',
                       hintText: '请再次输入密码',
-                      prefixIcon: const Icon(Icons.lock_outline),
+                      labelStyle: TextStyle(fontSize: 28.sp),
+                      hintStyle: TextStyle(fontSize: 28.sp),
+                      prefixIcon: Icon(Icons.lock_outline, size: 36.sp),
+                      contentPadding: EdgeInsets.symmetric(vertical: 20.h),
                       suffixIcon: IconButton(
                         icon: Icon(
                           _obscureConfirmPassword
                               ? Icons.visibility_off
                               : Icons.visibility,
+                          size: 36.sp,
                         ),
                         onPressed: () {
                           setState(() {
@@ -148,40 +162,40 @@ class _RegisterPageState extends State<RegisterPage> {
                       return null;
                     },
                   ),
-                  const SizedBox(height: 32),
+                  SizedBox(height: 64.h),
 
                   // 注册按钮
                   SizedBox(
                     width: double.infinity,
-                    height: 48,
+                    height: 88.h,
                     child: _isLoading
-                        ? const Center(
+                        ? Center(
                             child: SizedBox(
-                              width: 24,
-                              height: 24,
+                              width: 36.w,
+                              height: 36.w,
                               child: CircularProgressIndicator(
-                                strokeWidth: 2,
+                                strokeWidth: 3.w,
                               ),
                             ),
                           )
                         : GradientButton(
                             text: '注 册',
                             onPressed: _handleRegister,
-                            height: 48,
+                            height: 88.h,
                           ),
                   ),
-                  const SizedBox(height: 16),
+                  SizedBox(height: 32.h),
 
                   // 返回登录
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      Text('已有账号？', style: theme.textTheme.bodyMedium),
+                      Text('已有账号？', style: TextStyle(fontSize: 24.sp)),
                       TextButton(
                         onPressed: () {
                           context.pop();
                         },
-                        child: const Text('立即登录'),
+                        child: Text('立即登录', style: TextStyle(fontSize: 24.sp)),
                       ),
                     ],
                   ),

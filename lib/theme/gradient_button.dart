@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'app_colors.dart';
-import 'app_theme.dart';
 
 /// 渐变按钮组件
 class GradientButton extends StatelessWidget {
@@ -33,7 +33,7 @@ class GradientButton extends StatelessWidget {
 
   /// 创建渐变按钮
   const GradientButton({
-    Key? key,
+    super.key,
     required this.text,
     required this.onPressed,
     this.width,
@@ -43,7 +43,7 @@ class GradientButton extends StatelessWidget {
     this.borderRadius = 8.0,
     this.gradient,
     this.isDisabled = false,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -55,9 +55,9 @@ class GradientButton extends StatelessWidget {
           )
         : gradient ?? AppColors.primaryGradient;
 
-    final defaultTextStyle = const TextStyle(
+    final defaultTextStyle = TextStyle(
       color: Colors.white,
-      fontSize: 16,
+      fontSize: 26.sp,
       fontWeight: FontWeight.w600,
     );
 
@@ -67,9 +67,16 @@ class GradientButton extends StatelessWidget {
         width: width,
         height: height,
         padding: padding,
-        decoration: AppTheme.gradientButtonDecoration(
-          borderRadius: borderRadius,
+        decoration: BoxDecoration(
           gradient: buttonGradient,
+          borderRadius: BorderRadius.circular(borderRadius),
+          boxShadow: const [
+            BoxShadow(
+              color: Color(0x29000000),
+              offset: Offset(0, 3),
+              blurRadius: 6,
+            ),
+          ],
         ),
         child: Center(
           child: Text(
@@ -94,13 +101,13 @@ class GradientButton extends StatelessWidget {
       text: text,
       onPressed: onPressed,
       width: width,
-      height: 36.0,
-      textStyle: textStyle ?? const TextStyle(
+      height: 36.0.h,
+      textStyle: textStyle ?? TextStyle(
         color: Colors.white,
-        fontSize: 14,
+        fontSize: 20.sp,
         fontWeight: FontWeight.w500,
       ),
-      padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+      padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 8.h),
       borderRadius: 6.0,
       gradient: gradient,
       isDisabled: isDisabled,
@@ -120,13 +127,13 @@ class GradientButton extends StatelessWidget {
       text: text,
       onPressed: onPressed,
       width: width,
-      height: 56.0,
-      textStyle: textStyle ?? const TextStyle(
+      height: 56.0.h,
+      textStyle: textStyle ?? TextStyle(
         color: Colors.white,
-        fontSize: 18,
+        fontSize: 28.sp,
         fontWeight: FontWeight.w600,
       ),
-      padding: const EdgeInsets.symmetric(horizontal: 32, vertical: 16),
+      padding: EdgeInsets.symmetric(horizontal: 32.w, vertical: 16.h),
       borderRadius: 10.0,
       gradient: gradient,
       isDisabled: isDisabled,

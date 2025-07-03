@@ -218,7 +218,7 @@ class _AMapWebViewPageState extends State<AMapWebViewPage> {
           break;
       }
     } catch (e) {
-      print('JavaScript消息解析错误: $e');
+      // print('JavaScript消息解析错误: $e');
     }
   }
 

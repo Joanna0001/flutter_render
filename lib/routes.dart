@@ -6,6 +6,8 @@ import 'package:flutter_render/pages/login/login.dart';
 import 'package:flutter_render/pages/login/register.dart';
 import 'package:flutter_render/pages/profile/index.dart';
 import 'package:flutter_render/pages/store/list.dart';
+import 'package:flutter_render/pages/mall/list.dart';
+import 'package:flutter_render/pages/profile/address/list.dart';
 
 final GoRouter router = GoRouter(
   initialLocation: '/application',
@@ -34,6 +36,14 @@ final GoRouter router = GoRouter(
       path: '/profile',
       builder: (context, state) => const ProfilePage(),
     ),
+    GoRoute(
+      path: '/mall',
+      builder: (context, state) => const MallListPage(),
+    ),
+    GoRoute(
+      path: '/address',
+      builder: (context, state) => const AddressListPage(),
+    )
   ],
   errorBuilder: (context, state) => Scaffold(
     body: Center(

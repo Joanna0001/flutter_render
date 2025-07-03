@@ -120,8 +120,8 @@ class _MallListPageState extends State<MallListPage> {
   // 应用筛选
   void _applyFilter() {
     // 这里实现筛选逻辑
-    final minPrice = double.tryParse(_minPriceController.text);
-    final maxPrice = double.tryParse(_maxPriceController.text);
+    // final minPrice = double.tryParse(_minPriceController.text);
+    // final maxPrice = double.tryParse(_maxPriceController.text);
     
     // 在实际应用中，这里可以根据价格筛选商品
     setState(() {

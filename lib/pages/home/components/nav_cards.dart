@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_render/theme/app_colors.dart';
 import 'package:flutter_render/theme/app_theme.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:go_router/go_router.dart';
 
 class NavCards extends StatelessWidget {
   const NavCards({super.key});
@@ -21,6 +22,7 @@ class NavCards extends StatelessWidget {
               iconImage: 'images/home/near_sort.png',
               subTitle: '导航前往',
               iconHeight: 120.h,
+              path: '/store',
             ),
           ),
           SizedBox(width: 24.w),
@@ -33,6 +35,7 @@ class NavCards extends StatelessWidget {
               iconImage: 'images/home/send_to_home.png',
               subTitle: '送货到家',
               iconHeight: 140.h,
+              path: '/mall',
             ),
           ),
         ],
@@ -47,6 +50,7 @@ class NavCards extends StatelessWidget {
     required String iconImage,
     required String subTitle,
     required double iconHeight,
+    required String path,
   }) {
     return Container(
       height: 290.h,
@@ -54,7 +58,9 @@ class NavCards extends StatelessWidget {
       child: Material(
         color: Colors.transparent,
         child: InkWell(
-          onTap: () {},
+          onTap: () {
+            context.push(path);
+          },
           borderRadius: BorderRadius.circular(6),
           child: Padding(
             padding: EdgeInsets.symmetric(horizontal: 24.w, vertical: 24.h),
@@ -80,7 +86,13 @@ class NavCards extends StatelessWidget {
                   ],
                 ),
 
-                Text(subTitle, style: TextStyle(color: AppColors.textSecondary, fontSize: 20.sp)),
+                Text(
+                  subTitle,
+                  style: TextStyle(
+                    color: AppColors.textSecondary,
+                    fontSize: 20.sp,
+                  ),
+                ),
                 const Spacer(),
                 // 底部图标 - 居中显示
                 Center(
@@ -97,4 +109,4 @@ class NavCards extends StatelessWidget {
       ),
     );
   }
-} 
+}

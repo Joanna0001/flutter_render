@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:webview_flutter/webview_flutter.dart';
 import 'package:permission_handler/permission_handler.dart';
+import 'package:go_router/go_router.dart';
 
 class AMapWebViewPage extends StatefulWidget {
   const AMapWebViewPage({super.key});
@@ -28,12 +29,12 @@ class _AMapWebViewPageState extends State<AMapWebViewPage> {
     Map<Permission, PermissionStatus> statuses = await [
       Permission.location,
     ].request();
-    
+
     if (statuses[Permission.location]!.isDenied) {
       if (mounted) {
-        ScaffoldMessenger.of(context).showSnackBar(
-          const SnackBar(content: Text('需要位置权限才能获取附近门店')),
-        );
+        ScaffoldMessenger.of(
+          context,
+        ).showSnackBar(const SnackBar(content: Text('需要位置权限才能获取附近门店')));
       }
     }
   }
@@ -212,9 +213,9 @@ class _AMapWebViewPageState extends State<AMapWebViewPage> {
           _showStoreDetail(data['id'], data['title']);
           break;
         case 'error':
-          ScaffoldMessenger.of(context).showSnackBar(
-            SnackBar(content: Text('错误: ${data['message']}')),
-          );
+          ScaffoldMessenger.of(
+            context,
+          ).showSnackBar(SnackBar(content: Text('错误: ${data['message']}')));
           break;
       }
     } catch (e) {
@@ -226,17 +227,37 @@ class _AMapWebViewPageState extends State<AMapWebViewPage> {
   void _loadNearbyStores(double latitude, double longitude) {
     // 模拟数据，实际项目中应该从API获取
     final stores = [
-      {'id': '1', 'name': '门店1', 'lat': latitude + 0.005, 'lng': longitude + 0.003},
-      {'id': '2', 'name': '门店2', 'lat': latitude - 0.002, 'lng': longitude + 0.006},
-      {'id': '3', 'name': '门店3', 'lat': latitude + 0.004, 'lng': longitude - 0.004},
-      {'id': '4', 'name': '门店4', 'lat': latitude - 0.003, 'lng': longitude - 0.002},
+      {
+        'id': '1',
+        'name': '门店1',
+        'lat': latitude + 0.005,
+        'lng': longitude + 0.003,
+      },
+      {
+        'id': '2',
+        'name': '门店2',
+        'lat': latitude - 0.002,
+        'lng': longitude + 0.006,
+      },
+      {
+        'id': '3',
+        'name': '门店3',
+        'lat': latitude + 0.004,
+        'lng': longitude - 0.004,
+      },
+      {
+        'id': '4',
+        'name': '门店4',
+        'lat': latitude - 0.003,
+        'lng': longitude - 0.002,
+      },
     ];
-    
+
     setState(() {
       _storeList.clear();
       _storeList.addAll(stores);
     });
-    
+
     // 在地图上添加门店标记
     for (var store in stores) {
       _addStoreMarker(store);
@@ -245,7 +266,8 @@ class _AMapWebViewPageState extends State<AMapWebViewPage> {
 
   // 添加门店标记
   void _addStoreMarker(Map<String, dynamic> store) {
-    final jsCode = '''
+    final jsCode =
+        '''
       addMarker('${store['id']}', ${store['lat']}, ${store['lng']}, '${store['name']}');
     ''';
     _controller.runJavaScript(jsCode);
@@ -272,7 +294,10 @@ class _AMapWebViewPageState extends State<AMapWebViewPage> {
             children: [
               Text(
                 title,
-                style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                style: const TextStyle(
+                  fontSize: 18,
+                  fontWeight: FontWeight.bold,
+                ),
               ),
               const SizedBox(height: 8),
               Text('门店ID: $id'),
@@ -285,7 +310,7 @@ class _AMapWebViewPageState extends State<AMapWebViewPage> {
                 width: double.infinity,
                 child: ElevatedButton(
                   onPressed: () {
-                    Navigator.pop(context);
+                    context.pop();
                     // 这里可以跳转到下单页面
                   },
                   child: const Text('去下单'),
@@ -342,7 +367,8 @@ class _AMapWebViewPageState extends State<AMapWebViewPage> {
                     itemBuilder: (context, index) {
                       final store = _storeList[index];
                       return GestureDetector(
-                        onTap: () => _showStoreDetail(store['id'], store['name']),
+                        onTap: () =>
+                            _showStoreDetail(store['id'], store['name']),
                         child: Container(
                           width: 150,
                           margin: const EdgeInsets.all(8),

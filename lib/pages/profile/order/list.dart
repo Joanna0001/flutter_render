@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_render/theme/app_colors.dart';
 import 'package:flutter_render/theme/app_theme.dart';
-import 'package:flutter_render/pages/profile/order/detail.dart';
+import 'package:go_router/go_router.dart';
 
 class OrderListPage extends StatefulWidget {
   final int initialTabIndex;
@@ -85,13 +85,7 @@ class _OrderListPageState extends State<OrderListPage>
   Widget _buildOrderItem() {
     return GestureDetector(
       onTap: () {
-        Navigator.push(
-          context,
-          MaterialPageRoute(
-            builder: (context) =>
-                OrderDetailPage(orderId: 'ORDER123456789'),
-          ),
-        );
+        context.push('/order/detail/ORDER123456789');
       },
       child: Container(
         margin: EdgeInsets.only(bottom: 20.h),
@@ -104,7 +98,11 @@ class _OrderListPageState extends State<OrderListPage>
               padding: EdgeInsets.all(20.w),
               child: Row(
                 children: [
-                  Image.asset('images/app/store.png', width: 40.w, height: 40.w),
+                  Image.asset(
+                    'images/app/store.png',
+                    width: 40.w,
+                    height: 40.w,
+                  ),
                   SizedBox(width: 10.w),
                   Text(
                     '店铺名称',

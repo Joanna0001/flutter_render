@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
-import '../../../theme/app_colors.dart';
+import 'package:flutter_render/theme/app_colors.dart';
+import 'package:go_router/go_router.dart';
 
 class FilterBottomSheet extends StatelessWidget {
   final VoidCallback onApply;
   final TextEditingController minPriceController;
   final TextEditingController maxPriceController;
-  
+
   const FilterBottomSheet({
     super.key,
     required this.onApply,
@@ -26,24 +27,18 @@ class FilterBottomSheet extends StatelessWidget {
             children: [
               const Text(
                 '筛选',
-                style: TextStyle(
-                  fontSize: 18,
-                  fontWeight: FontWeight.bold,
-                ),
+                style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
               ),
               IconButton(
                 icon: const Icon(Icons.close),
-                onPressed: () => Navigator.pop(context),
+                onPressed: () => context.pop(),
               ),
             ],
           ),
           const SizedBox(height: 16),
           const Text(
             '价格区间',
-            style: TextStyle(
-              fontSize: 16,
-              fontWeight: FontWeight.bold,
-            ),
+            style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
           ),
           const SizedBox(height: 8),
           Row(
@@ -83,7 +78,7 @@ class FilterBottomSheet extends StatelessWidget {
             child: ElevatedButton(
               onPressed: () {
                 onApply();
-                Navigator.pop(context);
+                context.pop();
               },
               style: ElevatedButton.styleFrom(
                 backgroundColor: AppColors.primary,
@@ -94,10 +89,7 @@ class FilterBottomSheet extends StatelessWidget {
               ),
               child: const Text(
                 '应用筛选',
-                style: TextStyle(
-                  fontSize: 16,
-                  color: Colors.white,
-                ),
+                style: TextStyle(fontSize: 16, color: Colors.white),
               ),
             ),
           ),
@@ -105,7 +97,7 @@ class FilterBottomSheet extends StatelessWidget {
       ),
     );
   }
-  
+
   static void show({
     required BuildContext context,
     required VoidCallback onApply,
@@ -124,4 +116,4 @@ class FilterBottomSheet extends StatelessWidget {
       ),
     );
   }
-} 
+}

@@ -10,5 +10,6 @@
     "editor.suggestSelection": "first",
     "editor.tabCompletion": "onlySnippets",
     "editor.wordBasedSuggestions": "off"
-  }
+  },
+  "java.configuration.updateBuildConfiguration": "interactive"
 } 

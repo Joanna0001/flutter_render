@@ -30,6 +30,8 @@ android {
         versionName = flutter.versionName
     }
 
+    compileSdk = 35
+
     buildTypes {
         release {
             // TODO: Add your own signing config for the release build.

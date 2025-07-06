@@ -2,9 +2,18 @@ import 'package:flutter/material.dart';
 import 'package:flutter_render/routes.dart';
 import 'package:flutter_render/theme/app_theme.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:provider/provider.dart';
+import 'package:flutter_render/services/location_provider.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(
+    MultiProvider(
+      providers: [
+        ChangeNotifierProvider(create: (context) => LocationProvider()),
+      ],
+      child: const MyApp(),
+    ),
+  );
 }
 
 class MyApp extends StatelessWidget {
@@ -22,18 +31,18 @@ class MyApp extends StatelessWidget {
         darkTheme: AppTheme.dark(),
         routerConfig: router,
         builder: (context, widget) {
-            return GestureDetector(
-              onTap: () {
-                // 点击空白处隐藏键盘
-                FocusScopeNode currentFocus = FocusScope.of(context);
-                if (!currentFocus.hasPrimaryFocus &&
-                    currentFocus.focusedChild != null) {
-                  FocusManager.instance.primaryFocus?.unfocus();
-                }
-              },
-              child: widget!,
-            );
-          },
+          return GestureDetector(
+            onTap: () {
+              // 点击空白处隐藏键盘
+              FocusScopeNode currentFocus = FocusScope.of(context);
+              if (!currentFocus.hasPrimaryFocus &&
+                  currentFocus.focusedChild != null) {
+                FocusManager.instance.primaryFocus?.unfocus();
+              }
+            },
+            child: widget!,
+          );
+        },
       ),
     );
   }

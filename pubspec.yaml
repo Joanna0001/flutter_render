@@ -36,6 +36,10 @@ dependencies:
   flutter_screenutil: ^5.9.3  # 屏幕适配
   permission_handler: ^12.0.1  # 权限处理
   webview_flutter: ^4.13.0  # WebView插件
+  geolocator: ^14.0.2  # 定位
+  provider: ^6.1.5  # 状态管理
+  shared_preferences: ^2.5.3  # 本地存储
+  dio: ^5.8.0+1  # 网络请求
 
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.

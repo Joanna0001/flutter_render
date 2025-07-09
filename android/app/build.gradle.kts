@@ -7,8 +7,9 @@ plugins {
 
 android {
     namespace = "com.render.flutter_render"
-    compileSdk = flutter.compileSdkVersion
+    // compileSdk = flutter.compileSdkVersion
     // ndkVersion = flutter.ndkVersion
+    compileSdk = 35
 
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_11
@@ -29,8 +30,6 @@ android {
         versionCode = flutter.versionCode
         versionName = flutter.versionName
     }
-
-    compileSdk = 35
 
     buildTypes {
         release {

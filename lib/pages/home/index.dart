@@ -18,18 +18,27 @@ class _HomePageState extends State<HomePage> {
   @override
   void initState() {
     super.initState();
-    // 使用 addPostFrameCallback 确保在第一帧渲染完成后再调用位置更新
-    // 这样可以避免在构建过程中触发状态更新
-    WidgetsBinding.instance.addPostFrameCallback((_) {
-      // 在 Widget 初始化时调用一次获取位置的方法
-      // 使用 context.read() 是因为我们不关心后续 LocationProvider 的变化，
-      // 只是想触发一个动作。这在 initState 中是推荐的做法。
-      context.read<LocationProvider>().fetchCurrentLocation();
+    _initLocation();
+  }
+
+  void _initLocation() {
+    final provider = context.read<LocationProvider>();
+    Future.delayed(Duration.zero, () {
+      if (mounted &&
+          provider.currentLocation == null &&
+          provider.errorMessage == null) {
+        provider.fetchCurrentLocation();
+      }
     });
   }
 
   @override
   Widget build(BuildContext context) {
+    final locationProvider = context.watch<LocationProvider>();
+    debugPrint(
+      'locationProvider------------: ${locationProvider.currentLocation?.address}',
+    );
+
     return Scaffold(
       body: Column(
         children: [
@@ -41,7 +50,9 @@ class _HomePageState extends State<HomePage> {
                   const HomeBanner(),
 
                   // 店铺信息卡片
-                  const StoreCard(),
+                  locationProvider.currentLocation?.address != null
+                      ? StoreCard()
+                      : const SizedBox.shrink(),
 
                   // 导航卡片
                   const NavCards(),

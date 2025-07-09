@@ -2,18 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_render/theme/app_colors.dart';
 import 'package:flutter_render/theme/app_theme.dart';
-import 'package:provider/provider.dart';
-import 'package:flutter_render/services/location_provider.dart';
 
 class StoreCard extends StatelessWidget {
   const StoreCard({super.key});
 
   @override
   Widget build(BuildContext context) {
-    // 2. 使用 context.watch 来监听 LocationProvider 的状态变化
-    //    每当 LocationProvider 调用 notifyListeners()，这个 build 方法就会重新执行
-    final locationProvider = context.watch<LocationProvider>();
-
     return Container(
       margin: EdgeInsets.symmetric(horizontal: 24.w, vertical: 32.h),
       decoration: AppTheme.cardDecoration(),
@@ -97,8 +91,7 @@ class StoreCard extends StatelessWidget {
               children: [
                 Expanded(
                   child: Text(
-                    locationProvider.currentLocation?.address ??
-                        '地址：北京市海淀区清华大学西门对面清华科技园3号楼101室',
+                    '地址：北京市海淀区清华大学西门对面清华科技园3号楼101室',
                     style: TextStyle(
                       color: AppColors.textSecondary,
                       fontSize: 22.sp,

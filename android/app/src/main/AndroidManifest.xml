@@ -12,6 +12,9 @@
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher"
         android:enableOnBackInvokedCallback="true">
+        <meta-data
+            android:name="com.amap.api.v2.apikey"
+            android:value="ce1ecb89b0657be6dbc4599de49ae395"/>
         <activity
             android:name=".MainActivity"
             android:exported="true"

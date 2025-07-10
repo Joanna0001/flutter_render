@@ -19,7 +19,7 @@ class LocationProvider with ChangeNotifier {
 
   /// 构造函数中，尝试从本地存储加载上一次的位置信息
   LocationProvider() {
-    _loadLastKnownLocation();
+    // _loadLastKnownLocation();
   }
 
   /// 从 SharedPreferences 中加载位置
@@ -62,6 +62,9 @@ class LocationProvider with ChangeNotifier {
 
     try {
       final position = await LocationService.determinePosition();
+      debugPrint(
+        'position------------: ${position.latitude},${position.longitude}',
+      );
 
       _currentLocation = LocationData(
         latitude: position.latitude,

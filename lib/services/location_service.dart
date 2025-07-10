@@ -27,9 +27,10 @@ class LocationService {
 
       // 3. 当我们到达这里时，说明权限已经获取
 
-      final LocationSettings locationSettings = LocationSettings(
-        accuracy: LocationAccuracy.low, // best, medium, low, bestForNavigation
-        timeLimit: Duration(seconds: 15),
+      final LocationSettings locationSettings = AndroidSettings(
+        accuracy: LocationAccuracy
+            .high, //  android: hight medium low lowest   ios: lowest low medium high best
+        forceLocationManager: true,
       );
       return await Geolocator.getCurrentPosition(
         locationSettings: locationSettings,

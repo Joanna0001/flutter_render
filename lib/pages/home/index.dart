@@ -24,11 +24,7 @@ class _HomePageState extends State<HomePage> {
   void _initLocation() {
     final provider = context.read<LocationProvider>();
     Future.delayed(Duration.zero, () {
-      if (mounted &&
-          provider.currentLocation == null &&
-          provider.errorMessage == null) {
-        provider.fetchCurrentLocation();
-      }
+      provider.fetchCurrentLocation();
     });
   }
 
